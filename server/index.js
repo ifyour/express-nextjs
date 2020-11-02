@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const app = express();
 
-// Serve the static files from the React app
+// Serve the static files
 // https://github.com/vercel/next.js/discussions/14532
 app.use(express.static(path.join(__dirname, '../client/public')))
 app.use('/_next', express.static(path.join(__dirname, '../client/out/_next')));
@@ -14,7 +14,6 @@ app.get('/api/getList', (req, res) => {
   console.log('Sent list of items');
 });
 
-// Handles any requests that don't match the ones above
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/out/index.html'));
 });
