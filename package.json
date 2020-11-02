@@ -1,13 +1,12 @@
 {
   "name": "express-nextjs",
   "version": "1.0.0",
-  "description": "",
+  "description": "Deploying a Next.js app with an Express Backend.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node ./server/index.js",
     "dev": "nodemon ./server/index.js --watch server",
-    "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
+    "build": "cd client && npm install --only=dev && npm install && npm run build"
   },
   "keywords": [],
   "author": "",
