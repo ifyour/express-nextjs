@@ -20,14 +20,9 @@ app.get('/', (req, res) => {
 });
 
 // Static files
-// https://github.com/zeit/next.js/tree/4.2.3#user-content-static-file-serving-eg-images
-app.use(
-  '/_next',
-  express.static(
-    path.join(__dirname, '../client/out/_next'),
-    { maxAge: dev ? '0' : '365d' }
-  )
-);
+// https://github.com/vercel/next.js/discussions/14532
+app.use(express.static(path.join(__dirname, '../client/public')))
+app.use('/_next', express.static(path.join(__dirname, '../client/out/_next')));
 
 const port = process.env.PORT || 5000;
 app.listen(port);
