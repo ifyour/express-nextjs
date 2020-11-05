@@ -2,9 +2,9 @@
   "name": "express-nextjs",
   "version": "1.0.0",
   "description": "Deploying a Next.js app with an Express Backend.",
-  "main": "server/server.js",
+  "main": "server/index.js",
   "scripts": {
-    "start": "node server/server.js",
+    "start": "node server/index.js",
     "dev": "nodemon",
     "build": "cd client && npm install --only=dev && npm install && npm run build"
   },
