@@ -45,3 +45,4 @@ const auth = (...roles) => {
   }
 }
 
+module.exports = auth;
