@@ -1,24 +1,30 @@
 const express = require('express');
 const path = require('path');
+const dotenv = require('dotenv');
+const cors = require('cors');
+const HttpException = require('./utils/HttpException.utils');
+const errorMiddleware = require('./middleware/error.middleware');
+const userRouter = require('./routes/user.route');
 const app = express();
+dotenv.config();
+const port = Number(process.env.PORT || 5000);
 
-// Serve the static files
-// https://github.com/vercel/next.js/discussions/14532
+app.use(express.json());
+app.use(cors());
+app.options('*', cors());
+
+app.use(`/api/v1/users`, userRouter);
 app.use(express.static(path.join(__dirname, '../client/public')))
 app.use('/_next', express.static(path.join(__dirname, '../client/out/_next')));
-
-// An api endpoint that returns a short list of items
-app.get('/api/getList', (req, res) => {
-  var list = ["item1", "item2", "item3"];
-  res.json(list);
-  console.log('Sent list of items');
-});
-
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/out/index.html'));
 });
 
-const port = process.env.PORT || 5000;
-app.listen(port);
+app.all('*', (req, res, next) => {
+  const err = new HttpException(404, 'Endpoint not found');
+  next(err);
+})
+app.use(errorMiddleware);
 
-console.log('App is listening on port http://localhost:' + port);
+app.listen(port, () => console.log(`🚀 Server running at port ${port}`));
+module.exports = app;

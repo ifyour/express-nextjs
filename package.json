@@ -2,17 +2,23 @@
   "name": "express-nextjs",
   "version": "1.0.0",
   "description": "Deploying a Next.js app with an Express Backend.",
-  "main": "index.js",
+  "main": "server/index.js",
   "scripts": {
-    "start": "node ./server/index.js",
-    "dev": "nodemon ./server/index.js --watch server",
+    "start": "node server/index.js",
+    "dev": "nodemon",
     "build": "cd client && npm install --only=dev && npm install && npm run build"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "4"
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-validator": "^6.6.1",
+    "jsonwebtoken": "^8.5.1",
+    "mysql2": "^2.2.5"
   },
   "devDependencies": {
     "nodemon": "^2.0.6"
