@@ -43,6 +43,8 @@ class UserModel {
   update = async (params, id) => {
     const { columnSet, values } = multipleColumnSet(params);
 
+    // syntax: UPDATE table_name SET field1 = value1, field2 = value2 WHERE condition
+    // ref: https://www.mysqltutorial.org/mysql-update-data.aspx
     const sql = `UPDATE user SET ${columnSet} WHERE id = ?`;
 
     const result = await query(sql, [...values, id]);
