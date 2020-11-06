@@ -7,7 +7,7 @@
 ```bash
 # starting server
 $ cp .env-example .env
-$ vi .env # edit this file to configure the backend environment, and then save it.
+$ vi .env # edit this file to configure the backend environment, and then save it.
 $ yarn && yarn dev
 
 # starting client
