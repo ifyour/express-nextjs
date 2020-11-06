@@ -1,7 +1,7 @@
-DROP DATABASE IF EXISTS test_db;
-CREATE DATABASE IF NOT EXISTS test_db;
+-- 如果存在数据库则删除，然后创建 test_db;
+-- DROP DATABASE IF EXISTS test_db;
+-- CREATE DATABASE IF NOT EXISTS test_db;
 USE test_db;
-
 DROP TABLE IF EXISTS user;
 
 CREATE TABLE IF NOT EXISTS user
